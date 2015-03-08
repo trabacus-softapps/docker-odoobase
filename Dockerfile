@@ -54,7 +54,7 @@ ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # create the odoo user
-RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash odoo --group odoo
+RUN adduser --system --home=/opt/odoo --group odoo --disabled-password --gecos "" --shell=/bin/bash odoo
 
 # ADD sources for the oe components
 # ADD an URI always gives 600 permission with UID:GID 0 => need to chmod accordingly
