@@ -15,6 +15,7 @@ pyinotify
 xlrd
 authy
 xlsxwriter
+xmltodict
 # odoo official
 Babel
 Jinja2
