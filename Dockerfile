@@ -67,12 +67,12 @@ RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 # makes the container more unlikely to be unwillingly changed in interactive mode
 USER odoo
 
-RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo,additional_addons,data}" && \
+RUN /bin/bash -c "mkdir -p /opt/odoo/{bin,etc,sources/odoo/addons,additional_addons,data}" && \
     cd /opt/odoo/sources/odoo && \
         tar -xvf /opt/odoo/odoo.tar.gz --strip 1 && \
         rm /opt/odoo/odoo.tar.gz
 
-RUN /bin/bash -c "mkdir -p /opt/odoo/var/{run,log,egg-cache}"
+RUN /bin/bash -c "mkdir -p /opt/odoo/var/{run,log,egg-cache,ftp}"
 
 
 # Execution environment
