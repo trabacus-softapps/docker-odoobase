@@ -60,7 +60,6 @@ RUN curl https://deb.nodesource.com/node012/pool/main/n/nodejs/nodejs_0.12.0-1no
 	&& rm node.deb
 RUN npm install -g less less-plugin-clean-css \
 	&& npm cache clear
-RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # create the odoo user
 RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash odoo
