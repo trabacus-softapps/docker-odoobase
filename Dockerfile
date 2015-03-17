@@ -38,6 +38,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 libxrender1 libxext6 fontconfig \
                 python-zsi \
                 python-lasso \
+		rlwrap \
 		&& rm -rf /var/lib/apt/lists/*
 ADD sources/pip-req.txt /opt/sources/pip-req.txt
 
