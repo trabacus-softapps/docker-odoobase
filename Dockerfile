@@ -54,8 +54,11 @@ ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # Install some deps, lessc and less-plugin-clean-css
-RUN TERM=linux apt-get update &&  TERM=linux apt-get -y -q install nodejs
-RUN npm install -g less less-plugin-clean-css
+RUN curl https://deb.nodesource.com/node012/pool/main/n/nodejs/nodejs_0.12.0-1nodesource1~precise1_amd64.deb > node.deb \
+	&& dpkg -i node.deb \
+	&& rm node.deb
+RUN npm install -g less less-plugin-clean-css \
+	&& npm cache clear
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # create the odoo user
