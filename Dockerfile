@@ -12,7 +12,7 @@ RUN echo 'LANG="en_US.UTF-8"' > /etc/default/locale
 # add some system packages
 RUN  TERM=linux apt-get update &&  TERM=linux apt-get -y -q install \
         libterm-readline-perl-perl \
-        dialog sudo curl \
+        dialog sudo \
         && rm -rf /var/lib/apt/lists/*
 
 # Add the PostgreSQL PGP key to verify their Debian packages.
@@ -54,7 +54,7 @@ ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # Install some deps, lessc and less-plugin-clean-css
-RUN curl -L https://npmjs.com/install.sh | sh
+RUN TERM=linux apt-get update &&  TERM=linux apt-get -y -q install nodejs
 RUN npm install -g less less-plugin-clean-css
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
