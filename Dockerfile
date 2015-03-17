@@ -36,7 +36,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-imaging \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
-                python-zsi nodejs \
+                python-zsi \
                 python-lasso \
 		&& rm -rf /var/lib/apt/lists/*
 ADD sources/pip-req.txt /opt/sources/pip-req.txt
@@ -54,7 +54,8 @@ ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # Install some deps, lessc and less-plugin-clean-css
-RUN npm install -g less less-plugin-clean-css \
+RUN curl -L https://npmjs.com/install.sh | sh
+RUN npm install -g less less-plugin-clean-css
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # create the odoo user
@@ -63,7 +64,7 @@ RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash od
 # ADD sources for the oe components
 # ADD an URI always gives 600 permission with UID:GID 0 => need to chmod accordingly
 # /!\ carefully select the source archive depending on the version
-ADD http://nightly.odoo.com/8.0/nightly/src/odoo_8.0.20150301.tar.gz /opt/odoo/odoo.tar.gz
+ADD https://github.com/trabacus-softapps/odoo/archive/saas-6.tar.gz /opt/odoo/odoo.tar.gz
 RUN chown odoo:odoo /opt/odoo/odoo.tar.gz
 
 
