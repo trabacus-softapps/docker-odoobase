@@ -36,7 +36,7 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
                 python-imaging \
                 python-pychart python-libxslt1 xfonts-base xfonts-75dpi \
                 libxrender1 libxext6 fontconfig \
-                python-zsi \
+                python-zsi nodejs \
                 python-lasso \
 		&& rm -rf /var/lib/apt/lists/*
 ADD sources/pip-req.txt /opt/sources/pip-req.txt
@@ -52,6 +52,10 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
 # install wkhtmltopdf based on QT5
 ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb /opt/sources/wkhtmltox.deb
 RUN dpkg -i /opt/sources/wkhtmltox.deb
+
+# Install some deps, lessc and less-plugin-clean-css
+RUN npm install -g less less-plugin-clean-css \
+RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # create the odoo user
 RUN adduser --home=/opt/odoo --disabled-password --gecos "" --shell=/bin/bash odoo
