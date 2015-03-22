@@ -15,7 +15,7 @@ You may use your own sources simply by binding your local Odoo folder to /opt/od
 Here are the current revisions from https://github.com/trabacus-softapps/odoo/archive/saas-6.tar.gz for each docker tag
 
     # production grade
-    docker/odoobase:8.0	dd26aac66ffded4161195ec68b55bdd8d9d16e6f (branch saas-6)
+    docker/odoobase:8.0	42db2db4922764a9dc7f5e8325f60b7c62c1862a (branch saas-6)
 
 Start Odoo
 ----------
