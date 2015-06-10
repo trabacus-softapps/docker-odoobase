@@ -57,3 +57,4 @@ vatnumber
 vobject
 wsgiref
 xlwt
+dnspython
