@@ -51,7 +51,7 @@ RUN pip install --upgrade --use-wheel --no-index --pre \
         --requirement=/opt/sources/pip-req.txt
 
 # install wkhtmltopdf based on QT5
-ADD http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb /opt/sources/wkhtmltox.deb
+ADD http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb /opt/sources/wkhtmltox.deb
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # Install some deps, lessc and less-plugin-clean-css
