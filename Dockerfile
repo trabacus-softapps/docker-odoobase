@@ -42,6 +42,10 @@ RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main" > /etc/
 		&& rm -rf /var/lib/apt/lists/*
 ADD sources/pip-req.txt /opt/sources/pip-req.txt
 
+# Update pip & wheel
+RUN pip install --upgrade --use-wheel --no-index --pre \
+        --find-links=https://googledrive.com/host/0Bz-lYS0FYZbIfklDSm90US16S0VjWmpDQUhVOW1GZlVOMUdXb1hENFFBc01BTGpNVE1vZGM pip wheel 
+
 # use wheels from our public wheelhouse for proper versions of listed packages
 # as described in sourced pip-req.txt
 # these are python dependencies for odoo and "apps" as precompiled wheel packages
@@ -55,9 +59,9 @@ ADD http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-t
 RUN dpkg -i /opt/sources/wkhtmltox.deb
 
 # Install some deps, lessc and less-plugin-clean-css
-RUN curl https://deb.nodesource.com/node012/pool/main/n/nodejs/nodejs_0.12.0-1nodesource1~precise1_amd64.deb > node.deb \
-	&& dpkg -i node.deb \
-	&& rm node.deb
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN sudo apt-get install -y nodejs \
+	&& rm -rf /var/lib/apt/lists/*
 RUN npm install -g less less-plugin-clean-css \
 	&& npm cache clear
 
