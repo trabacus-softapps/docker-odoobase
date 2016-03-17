@@ -16,6 +16,7 @@ authy
 xlsxwriter
 xmltodict
 PyJWT
+beautifulsoup4
 # odoo official
 Babel
 Jinja2
