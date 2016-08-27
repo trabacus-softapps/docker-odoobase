@@ -17,6 +17,11 @@ xlsxwriter
 xmltodict
 PyJWT
 beautifulsoup4
+wit
+ofxparse
+flanker
+pycrypto
+requests-futures
 # odoo official
 Babel
 Jinja2
@@ -60,3 +65,4 @@ wsgiref
 xlwt
 dnspython
 numpy
+PyChart
