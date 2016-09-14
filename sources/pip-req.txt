@@ -66,4 +66,4 @@ xlwt
 dnspython
 numpy
 PyChart
-GeoIP
+geoip
